@@ -27,7 +27,7 @@ Schema::table('comments', function (Blueprint $table) {
 });
 ```
 
-Update you model, use Sortable trait and fill **$sortable_field** property.
+Update you model, use Sortable trait and fill `$sortable_field` property.
 
 ```php
     use Hippie\Sortable\Sortable;
@@ -40,7 +40,7 @@ Update you model, use Sortable trait and fill **$sortable_field** property.
     }
 ```
 
-If your model have BelongsTo relationship, and you want to move records up and down within your relation items fill **$sortable_relation** property.
+If your model have BelongsTo relationship, and you want to move records up and down within your relation items fill `$sortable_relation` property.
  
 ```php
 use Hippie\Sortable\Sortable;
@@ -72,7 +72,7 @@ class Post extends Model
 }
 ```
 
-In case you don't want to calculate your sortable field value on creating new item manually add **static::created** to your sortable model
+In case you don't want to calculate your sortable field value on creating new item manually add `static::created` to your sortable model
 ```php
 protected static function booted()
 {
