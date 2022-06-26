@@ -22,12 +22,5 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.1"
-  },
-  "extra": {
-    "laravel" : {
-      "providers" : [
-        "Hippie\\Sortable\\SortableServiceProvider"
-      ]
-    }
   }
 }
