@@ -27,7 +27,7 @@ Schema::table('comments', function (Blueprint $table) {
 });
 ```
 
-Update you model, use Sortable trait and fill `$sortable_field` property.
+Update you model, use Sortable trait and fill `$sortable_field` property according to field name you've added.
 
 ```php
     use Hippie\Sortable\Sortable;
@@ -37,6 +37,10 @@ Update you model, use Sortable trait and fill `$sortable_field` property.
         use Sortable;
         
         protected string $sortable_field = 'order';
+        
+        protected $fillable = [
+            'order',
+        ];
     }
 ```
 
