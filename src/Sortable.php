@@ -83,9 +83,11 @@ trait Sortable
 
     public function updateSortOrderOnCreate(): void
     {
-        $this->update([
-            'order' => $this->items()->count(),
-        ]);
+	    if($this->getRelationValue($this->sortable_relation())) {
+		    $this->update([
+			    'order' => $this->items()->count(),
+		    ]);
+	    }
     }
 
     private function items()
