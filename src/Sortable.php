@@ -15,18 +15,18 @@ trait Sortable
         $model = new self();
 
         if (!$model->sortable_field()) {
-            throw new Exception('Sortable: no protected $sortable_field property on ' . self::class);
+            throw new Exception('Sortable: no protected $sortable_field property on '.self::class);
         }
 
         if (!Schema::hasColumn($model->getTable(), $model->sortable_field())) {
-            throw new Exception('Sortable: Unknown column `' . $model->sortable_field() . '` in ' . $model->getTable() . ' table');
+            throw new Exception('Sortable: Unknown column `'.$model->sortable_field().'` in '.$model->getTable().' table');
         }
 
         if ($model->sortable_relation()) {
             try {
                 self::has($model->sortable_relation());
             } catch (\BadMethodCallException $exception) {
-                throw new Exception('Sortable: Model ' . self::class . ' dont have ' . $model->sortable_relation() . ' relationship');
+                throw new Exception('Sortable: Model '.self::class.' dont have '.$model->sortable_relation().' relationship');
             }
         }
     }
@@ -83,11 +83,11 @@ trait Sortable
 
     public function updateSortOrderOnCreate(): void
     {
-	    if($this->getRelationValue($this->sortable_relation())) {
-		    $this->update([
-			    'order' => $this->items()->count(),
-		    ]);
-	    }
+        if ($this->getRelationValue($this->sortable_relation())) {
+            $this->update([
+                'order' => $this->items()->count(),
+            ]);
+        }
     }
 
     private function items()
@@ -98,6 +98,7 @@ trait Sortable
         } else {
             $collection = self::class::all();
         }
+
         return $collection->sortBy($this->sortable_field())->values();
     }
 
@@ -114,4 +115,3 @@ trait Sortable
         }
     }
 }
-
